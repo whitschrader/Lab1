@@ -3,15 +3,12 @@ class SessionsController < ApplicationController
   def new
   end
 
-  def update
-  end
-
-  def create
-    user = User.find_by_email(params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
+  def create #finding an existing user, making a new session instatiating them
+    @user = User.find_by_email(params[:session][:email].downcase)
+    if @user && @user.authenticate(params[:session][:password])
       # Sign the user in and redirect to the user's show page.
-      sign_in user
-      redirect_to new_go_path
+      sign_in @user
+      redirect_to(@user)
     else
       # Create an error message and re-render the signin form.
       flash.now[:error]='Invalid email/password combination'
