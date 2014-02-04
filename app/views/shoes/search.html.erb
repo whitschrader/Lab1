@@ -1,0 +1,19 @@
+Add a search field for Zappos here. 
+ 
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:shoes, url: get_results_path) do |s| %>
+
+      <%= s.label :brand_name %>
+      <%= s.text_field :brand_name, :placeholder => "adidas" %>
+
+      <%= s.label :product_name %>
+      <%= s.password_field :product_name, :placeholder => "sambas" %>
+
+       <%= s.label :size %>
+      <%= s.password_field :size, :placeholder => "US only! ex: 9.5" %>
+
+      <%= s.submit "Search", class: "btn btn-large btn-primary" %>
+    <% end %> 
+  </div>   
+</div>

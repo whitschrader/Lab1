@@ -25,6 +25,8 @@ class UsersController < ApplicationController
   def destroy
   end
 
+  def search
+  end
   
 
 end

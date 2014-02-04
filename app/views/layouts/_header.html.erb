@@ -1,0 +1,56 @@
+
+
+
+<p> break </p>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+     <!--       <a class="navbar-brand" href=<%new_session_path %>>Cinderella</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right" role="form">
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+          </form>
+        </div>
+ -->
+
+
+          <a class="navbar-brand" href=<%new_session_path %>>Cinderella</a>
+        </div>
+        <div class="form-group">
+            <ul class="nav navbar-nav navbar-right">
+              <% if signed_in? %>
+                <li><%= link_to "My profile", current_user %></li>
+                <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+              <% else %>
+              
+                <%= form_for(:session, url: sessions_path) do |f| %>
+
+                  <%= f.label :email %>
+                  <%= f.text_field :email %>
+
+                  <%= f.label :password %>
+                  <%= f.password_field :password %>
+
+                <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+              <% end %>
+            <% end %>
+            </ul>
+          </div>
+</div>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>

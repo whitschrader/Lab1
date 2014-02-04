@@ -1,0 +1,13 @@
+
+<h1>Results:</h1>
+
+<% @display.each do |p|%> 
+
+	<div>
+		<a href = "<%= p["defaultProductUrl"] %>"> <img src = "<%= p["defaultImageUrl"]%>"> </a> <br>
+
+		<%=p["productName"]%>
+	</div>
+<%end%>
+
+
