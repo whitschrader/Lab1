@@ -1,13 +1,35 @@
-
-<h1>Results:</h1>
-
 <% @display.each do |p|%> 
-
-	<div>
-		<a href = "<%= p["defaultProductUrl"] %>"> <img src = "<%= p["defaultImageUrl"]%>"> </a> <br>
-
-		<%=p["productName"]%>
-	</div>
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+		<div>
+			<a href = "<%= p["defaultProductUrl"] %>"> <img src = "<%= p["defaultImageUrl"]%>"> </a> <br>
+			<div class="inline">
+				<div>
+		 			<h3><%=p["brandName"]%></h3>
+		 			<h4><%=p["productName"]%></h4>
+		 			<h4><%=p["size"]%></h4>
+		 		</div>
+		 		<div>
+		 		
+		 			<%= form_for @shoe, action: shoes_path, method: :post do |f| %>
+		 				<%= f.hidden_field :product, value: p["productId"] %>
+		 				<%= f.hidden_field :brand_id, value: p["brandId"] %>
+		 				<%= f.hidden_field :brand_name, value: p["brandName"] %>
+		 				<%= f.hidden_field :product_name, value: p["productName"] %>
+		 				<%= f.hidden_field :size, value: p["size"] %>
+		 				<%= f.hidden_field :product_url, value: p["defaultProductUrl"] %>
+		 				<%= f.hidden_field :img_url, value: p["defaultImageUrl"] %>
+		 				
+		 			<%= f.submit "these are my shoes", class: "btn btn-default" %>
+		 			<%end%>
+ 					<!-- <p><a href="#" class="btn btn-primary" role="button">I own these shoes</a> -->
+ 				</div>
+			</div>
+		</div>
+   </div>
+</div>
 <%end%>
+
 
 

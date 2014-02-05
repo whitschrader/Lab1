@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :connections #define your bridge table, many connections to it
+  has_many :shoes, through: :connections #connecting to shoes table
 
   has_secure_password
 

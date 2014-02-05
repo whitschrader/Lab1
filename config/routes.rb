@@ -5,6 +5,7 @@ Shoeapp::Application.routes.draw do
   get '/search' => 'shoes#search', as: :search
   post '/get_results' => 'shoes#get_results', as: :get_results
 
+
   get '/signup' => 'users#new' 
 
   root to: 'sessions#new'
