@@ -37,8 +37,10 @@ class ShoesController < ApplicationController
 	end
 
 	def destroy
-	    shoe = Shoe.find(params[:id])
-	    shoe.destroy
+		shoe_id = params[:shoe_id]
+	    #shoe = Shoe.find(params[:shoe_id])
+	    user = User.find(params[:user_id])
+	    user.shoes.find(shoe_id).destroy
 	    redirect_to root_path
   	end
 
@@ -66,8 +68,8 @@ class ShoesController < ApplicationController
 		#         "brandId": "138",
 		#         "brandName": "Sam & Libby Girls",
 		#         "productName": "Aideen (Youth)",
-		#         "defaultProductUrl": "http://www.zappos.com/product/7564933",
-		#         "defaultImageUrl": "http://www.zappos.com/images/z/9/6/8/968186-p-DETAILED.jpg"
+		#         "productUrl": "http://www.zappos.com/product/7564933",
+		#         "thumbnailImageUrl": "http://www.zappos.com/images/z/9/6/8/968186-p-DETAILED.jpg"
   #   	},
   #   	{
 		#         "productId": "7590514",

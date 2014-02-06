@@ -2,14 +2,16 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
-gem 'rails_12factor', group: :production
+
 
 gem 'typhoeus'
 
 gem 'pry'
 
-# Use pg as the database for Active Record
 gem 'pg'
+
+# Use sqlite3 as the database for Active Record
+# gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -42,9 +44,10 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 
 gem 'annotate'
 
-
+# gem 'rails_12'
 gem 'dotenv-rails', group: :development
 
+gem 'rails_12factor', group: :production
 
 # Use unicorn as the app server
 # gem 'unicorn'

@@ -3,7 +3,7 @@
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
 		<div>
-			<a href = "<%= p["defaultProductUrl"] %>"> <img src = "<%= p["defaultImageUrl"]%>"> </a> <br>
+			<a href = "<%= p["productUrl"] %>"> <img src = "<%= p["thumbnailImageUrl"]%>"> </a> <br>
 			<div class="inline">
 				<div>
 		 			<h3><%=p["brandName"]%></h3>
@@ -12,14 +12,14 @@
 		 		</div>
 		 		<div>
 		 			<%= form_for @shoe,  method: :post do |f| %>
+		 				<!-- :product, :brand_id ect match the parameters of my model -->
 		 				<%= f.hidden_field :product, value: p["productId"] %>
 		 				<%= f.hidden_field :brand_id, value: p["brandId"] %>
 		 				<%= f.hidden_field :brand_name, value: p["brandName"] %>
 		 				<%= f.hidden_field :product_name, value: p["productName"] %>
 		 				<%= f.hidden_field :size, value: p["size"] %>
-		 				<%= f.hidden_field :product_url, value: p["defaultProductUrl"] %>
-		 				<%= f.hidden_field :img_url, value: p["defaultImageUrl"] %>
-		 				
+		 				<%= f.hidden_field :product_url, value: p["productUrl"] %>
+		 				<%= f.hidden_field :img_url, value: p["thumbnailImageUrl"] %>
 		 			<%= f.submit "these are my shoes", class: "btn btn-default" %>
 		 			<%end%>
  					<!-- <p><a href="#" class="btn btn-primary" role="button">I own these shoes</a> -->
