@@ -7,12 +7,12 @@
 	  <div class="col-sm-6 col-md-4">
 	    <div class="thumbnail">
 			<div>
-				<a href = "<%= p["productUrl"] %>"> <img src = "<%= p["thumbnailImageUrl"]%>"> </a> <br>
+				<a href = "<%= p["product_url"] %>"> <img src = "<%= p["img_url"]%>"> </a> <br>
 				<div class="inline">
 					<div>
 			 			<h3><%=p["brandName"]%></h3>
 			 			<h4><%=p["productName"]%></h4>
-			 			<h4><%=p["size"]%></h4>
+			 			<h5><%=p["size"]%></h5>
 			 		</div>
 			 		<div>
 			 			<%= form_for p, url: delete_shoe_path(@user.id, p.id), method: :delete do |f| %>

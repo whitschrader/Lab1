@@ -24,7 +24,7 @@ class ShoesController < ApplicationController
 		# now associate with the current_user
 		current_user.shoes << @shoe
 
-
+		# redirect to user_path with the argument 'user id' creates path: /user/:id
 		redirect_to user_path(current_user.id)
 
 	end 
@@ -38,7 +38,6 @@ class ShoesController < ApplicationController
 
 	def destroy
 		shoe_id = params[:shoe_id]
-	    #shoe = Shoe.find(params[:shoe_id])
 	    user = User.find(params[:user_id])
 	    user.shoes.find(shoe_id).destroy
 	    redirect_to root_path
