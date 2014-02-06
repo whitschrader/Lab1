@@ -5,6 +5,7 @@ Shoeapp::Application.routes.draw do
   get '/search' => 'shoes#search', as: :search
   post '/get_results' => 'shoes#get_results', as: :get_results
 
+  delete '/users/:id/shoes/:id' => 'shoes#delete', as: :delete_shoe
 
   get '/signup' => 'users#new' 
 

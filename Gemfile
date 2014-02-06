@@ -41,6 +41,8 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 
 gem 'annotate'
 
+gem 'dotenv-rails', group: :development
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

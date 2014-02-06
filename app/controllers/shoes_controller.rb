@@ -9,20 +9,25 @@ class ShoesController < ApplicationController
 	end
 
 	def create
+		#create a new shoe by grabbing the params from the form setting these as the variable new_shoe
+		#:product, :brand_id, :size ect are called from the form, ':shoe'
 		new_shoe = params.require(:shoe).permit(:product, :brand_id, :size, :brand_name, :product_name, :size, :img_url, :product_url)
-		if Shoe.find_by(product: new_shoe["product"]).nil? 
-			#if this doesn't exist then create 
-			Shoe.create(new_shoe)
-		end
-		#associate with the user 
 		
-			
+		# find within the "shoes" table, the look in the column 'product:' for the value as defined by new_shoe["product"] has
+		@shoe = Shoe.find_by(product: new_shoe["product"])
+		if @shoe.nil?
+			#if this doesn't exist then create a shoe
+			@shoe = Shoe.create(new_shoe) 
+			#check for repeat submissions!
 		end
 
+		# now associate with the current_user
+		current_user.shoes << @shoe
 
-		#@shoe = Show.create(new_shoe)
-		
-	end
+
+		redirect_to user_path(current_user.id)
+
+	end 
 
 	def update
 		new_shoe = params.require(:shoes, :size, :brand_name, :img_url, :product_url).permit(:size)
@@ -47,28 +52,35 @@ class ShoesController < ApplicationController
 
 	def get_results
 		#search_str = params[:shoes][:brand_name]
+		#http://api.zappos.com/Product/7564933?key=
 
-        # result = Typhoeus.get("www.zappos.com", :params => {:product => search_str})
-		result = '{"product": [{
-		        "productId": "7564933",
-		        "brandId": "138",
-		        "brandName": "Sam & Libby Girls",
-		        "productName": "Aideen (Youth)",
-		        "defaultProductUrl": "http://www.zappos.com/product/7564933",
-		        "defaultImageUrl": "http://www.zappos.com/images/z/9/6/8/968186-p-DETAILED.jpg"
-    	},
-    	{
-		        "productId": "7590514",
-		        "brandId": "11",
-		        "brandName": "ASICS",
-		        "productName": "GT-2150™",
-		        "defaultProductUrl": "http://www.zappos.com/product/7590514",
-		        "defaultImageUrl": "http://www.zappos.com/images/z/1/0/2/1023562-p-DETAILED.jpg"
-		}
-    	]}'
+		terms_for_typhoeus = {:term => 'adidas', :key => '27b076f861701c2532e22f21b7b455c545afde4c'}
+														 #27b076f861701c2532e22f21b7b455c545afde4c
+	 	terms_for_typhoeus[:term] =  "#{params[:shoes][:brand_name]} #{params[:shoes][:product_name]}"
+
+  	    result = Typhoeus.get("http://api.zappos.com/Search/", :params => terms_for_typhoeus)
+   
+
+		# result = '{"results": [{
+		#         "productId": "7564933",
+		#         "brandId": "138",
+		#         "brandName": "Sam & Libby Girls",
+		#         "productName": "Aideen (Youth)",
+		#         "defaultProductUrl": "http://www.zappos.com/product/7564933",
+		#         "defaultImageUrl": "http://www.zappos.com/images/z/9/6/8/968186-p-DETAILED.jpg"
+  #   	},
+  #   	{
+		#         "productId": "7590514",
+		#         "brandId": "11",
+		#         "brandName": "ASICS",
+		#         "productName": "GT-2150™",
+		#         "defaultProductUrl": "http://www.zappos.com/product/7590514",
+		#         "defaultImageUrl": "http://www.zappos.com/images/z/1/0/2/1023562-p-DETAILED.jpg"
+		# }
+  #   	]}'
     	#here we are adding the input from the form and setting the key 'size' in the shoe hash, then adding those sizes in.
-
-    	allresults = JSON.parse(result)["product"].sort_by {|p| p["productName"]}
+    	
+    	allresults = JSON.parse(result.response_body)["results"].sort_by {|p| p["productName"]}
     	
     	#adding shoe sizes to the @display hash
 
@@ -84,26 +96,5 @@ class ShoesController < ApplicationController
 	end
 end
 
-
-# result = '"product": [
-# 		    {
-# 		        "productId": "7564933",
-# 		        "brandId": "138",
-# 		        "brandName": "Sam & Libby Girls",
-# 		        "productName": "Aideen (Youth)",
-# 		        "defaultProductUrl": "http://www.zappos.com/product/7564933",
-# 		        "defaultImageUrl": "http://www.zappos.com/images/z/9/6/8/968186-p-DETAILED.jpg"
-# 		    },
-# 		    {
-# 		        "productId": "7590514",
-# 		        "brandId": "11",
-# 		        "brandName": "ASICS",
-# 		        "productName": "GT-2150™",
-# 		        "defaultProductUrl": "http://www.zappos.com/product/7590514",
-# 		        "defaultImageUrl": "http://www.zappos.com/images/z/1/0/2/1023562-p-DETAILED.jpg"
-# 		    }
-# 		]'
-
-#     	@display = result
 
 

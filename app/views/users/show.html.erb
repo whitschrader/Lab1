@@ -1,3 +1,21 @@
 <h1>Users#show This is your Profile</h1>
 <p>Find me in app/views/users/show.html.erb</p>
 
+<% @my_closet.each do |p|%> 
+	<div class="row">
+	  <div class="col-sm-6 col-md-4">
+	    <div class="thumbnail">
+			<div>
+				<a href = "<%= p["defaultProductUrl"] %>"> <img src = "<%= p["defaultImageUrl"]%>"> </a> <br>
+				<div class="inline">
+					<div>
+			 			<h3><%=p["brandName"]%></h3>
+			 			<h4><%=p["productName"]%></h4>
+			 			<h4><%=p["size"]%></h4>
+			 		</div>
+			 	</div>
+		 	</div>
+	 	</div>
+	</div>
+<%end%>
+

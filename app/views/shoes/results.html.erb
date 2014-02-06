@@ -11,8 +11,7 @@
 		 			<h4><%=p["size"]%></h4>
 		 		</div>
 		 		<div>
-		 		
-		 			<%= form_for @shoe, action: shoes_path, method: :post do |f| %>
+		 			<%= form_for @shoe,  method: :post do |f| %>
 		 				<%= f.hidden_field :product, value: p["productId"] %>
 		 				<%= f.hidden_field :brand_id, value: p["brandId"] %>
 		 				<%= f.hidden_field :brand_name, value: p["brandName"] %>
