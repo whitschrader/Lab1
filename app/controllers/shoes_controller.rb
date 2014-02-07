@@ -1,9 +1,5 @@
 class ShoesController < ApplicationController
 
-	def index
-		@shoes =Shoe.all
-	end
-
 	def new
 		@shoe = Shoe.new
 	end
@@ -15,6 +11,7 @@ class ShoesController < ApplicationController
 		
 		# find within the "shoes" table, the look in the column 'product:' for the value as defined by new_shoe["product"] has
 		@shoe = Shoe.find_by(product: new_shoe["product"])
+		
 		if @shoe.nil?
 			#if this doesn't exist then create a shoe
 			@shoe = Shoe.create(new_shoe) 
@@ -22,7 +19,9 @@ class ShoesController < ApplicationController
 		end
 
 		# now associate with the current_user
-		current_user.shoes << @shoe
+		unless current_user.shoes.include?(@shoe) 
+			current_user.shoes<< @shoe
+		end
 
 		# redirect to user_path with the argument 'user id' creates path: /user/:id
 		redirect_to user_path(current_user.id)
@@ -40,7 +39,7 @@ class ShoesController < ApplicationController
 		shoe_id = params[:shoe_id]
 	    user = User.find(params[:user_id])
 	    user.shoes.find(shoe_id).destroy
-	    redirect_to root_path
+	    redirect_to user_path(current_user.id)
   	end
 
   	def show

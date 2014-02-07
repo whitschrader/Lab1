@@ -14,7 +14,8 @@
     <div class="form-group">
         <ul class="nav navbar-nav navbar-right">
           <% if signed_in? %>
-            <li><%= link_to "Matching Shoes", current_user %></li>
+            <li><%= link_to "Add to closet", search_path %></li>
+            <li><%= link_to "Matching Shoes", match_path %></li>
             <li><%= link_to "My closet", current_user %></li>
             <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
           <% else %>

@@ -3,10 +3,26 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
+#some debugging tools
 
-gem 'typhoeus'
+gem 'awesome_print', group: :development 
+
+gem 'pry-rails', group: :development
+
+gem 'pry-byebug', group: :development
+
+gem 'quiet_assets', group: :development
+
+gem 'better_errors', group: :development
+
+gem 'binding_of_caller', group: :development
+
+gem 'meta_request', group: :development
 
 gem 'pry'
+# ----
+
+gem 'typhoeus'
 
 gem 'pg'
 

@@ -7,6 +7,10 @@ Shoeapp::Application.routes.draw do
 
   delete '/users/:user_id/shoes/:shoe_id' => 'shoes#destroy', as: :delete_shoe
 
+  get '/match' => 'users#match'
+
+
+
   get '/signup' => 'users#new' 
 
   root to: 'sessions#new'

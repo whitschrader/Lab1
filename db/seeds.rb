@@ -9,4 +9,14 @@
 User.delete_all
 
 m = User.create(:name => 'Markus',  email: "mguehrs@gmail.com", password: "foobar123", password_confirmation: "foobar123")
-r = User.create(:name => 'Whit', :email => "whit.schrader@gmail.com", :password => "asdasd", :password_confirmation => "asdasd")
+w = User.create(:name => 'Whit', :email => "whit.schrader@gmail.com", :password => "asdasd", :password_confirmation => "asdasd")
+j = User.create(:name => 'Jane', :email => "jane@gmail.com", :password => "asdasd", :password_confirmation => "asdasd")
+
+Shoe.create(id: 11, size: 9, product_name: 'sambas', brand_name: 'adidas')
+Shoe.create(id: 12, size: 10, product_name: 'air jordans', brand_name: 'nike')
+Shoe.create(id: 13, size: 10, product_name: 'boots', brand_name: 'timberlands')
+m.shoes << Shoe.find(11)
+m.shoes << Shoe.find(12)
+
+w.shoes << Shoe.find(11)
+w.shoes << Shoe.find(13)

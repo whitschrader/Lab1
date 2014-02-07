@@ -1,18 +1,18 @@
 <h1>Users#show This is your Profile</h1>
 <p>Find me in app/views/users/show.html.erb</p>
 
-<% @my_closet.each do |p|%> 
+<div class="row">
 
-	<div class="row">
-	  <div class="col-sm-6 col-md-4">
-	    <div class="thumbnail">
+<% @my_closet.each do |p|%> 
+	<div class="col-shoe col-sm-6 col-md-4">
+	  
 			<div>
 				<a href = "<%= p["product_url"] %>"> <img src = "<%= p["img_url"]%>"> </a> <br>
 				<div class="inline">
 					<div>
-			 			<h3><%=p["brandName"]%></h3>
-			 			<h4><%=p["productName"]%></h4>
-			 			<h5><%=p["size"]%></h5>
+			 			<h4><%=p["brand_name"]%></h4>
+			 			<h4><%=p["product_name"]%></h4>
+			 			<h5>size <%=p["size"]%></h5>
 			 		</div>
 			 		<div>
 			 			<%= form_for p, url: delete_shoe_path(@user.id, p.id), method: :delete do |f| %>
@@ -27,10 +27,13 @@
 		 				
 		 			<%= f.submit "delete this shoe", class: "btn btn-default" %>
 		 			<%end%>
-		 			<div>
-			 	</div>
-		 	</div>
-	 	</div>
-	</div>
+		 		</div>
+
+		 		</div>
+		 				
+			</div>
+	</div>	 	
 <%end%>
+
+</div>
 
