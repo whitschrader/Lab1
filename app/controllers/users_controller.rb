@@ -6,15 +6,32 @@ class UsersController < ApplicationController
 
     shoes_in_closet = current_user.shoes
 
+    last_user  = nil
+    matched_users_list = Hash.new(:excluded)
+    last_shoe = nil
+    matched_shoe_list = Hash.new(:excluded)
+
     shoes_in_closet.each do |closet_shoe|
       matching_users = closet_shoe.users
-
       matching_users.each do |eachuser|
-        matching_users_shoes = eachuser.shoes
-        matching_users_shoes.each do |shoe|
-          @potential_closet << shoe
-        end 
+        if(matched_users_list[eachuser] == :excluded) 
+          matched_users_list[eachuser] = last_user
+          last_user = eachuser
+
+          matching_users_shoes = eachuser.shoes
+
+          matching_users_shoes.each do |shoe|
+            puts shoe
+            if(matched_shoe_list[shoe] == :excluded)
+              matched_shoe_list[shoe] = last_shoe
+              last_shoe = shoe
+
+             # @potential_closet << shoe
+            end
+          end 
+        end
       end
+      @potential_closet = matched_shoe_list.keys
     end
 
 
