@@ -25,8 +25,6 @@ class UsersController < ApplicationController
             if(matched_shoe_list[shoe] == :excluded)
               matched_shoe_list[shoe] = last_shoe
               last_shoe = shoe
-
-             # @potential_closet << shoe
             end
           end 
         end

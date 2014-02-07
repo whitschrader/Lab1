@@ -1,14 +1,17 @@
+<div class="search">
+	<%= render 'layouts/search' %>
+</div>
+
 <% @display.each do |p|%> 
 <div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
+  <div class="col-shoe col-sm-6 col-md-4">
 		<div>
 			<a href = "<%= p["productUrl"] %>"> <img src = "<%= p["thumbnailImageUrl"]%>"> </a> <br>
 			<div class="inline">
 				<div>
 		 			<h3><%=p["brandName"]%></h3>
 		 			<h4><%=p["productName"]%></h4>
-		 			<h4><%=p["size"]%></h4>
+		 			<h4>US size: <%=p["size"]%></h4>
 		 		</div>
 		 		<div>
 		 			<%= form_for @shoe,  method: :post do |f| %>
@@ -25,7 +28,6 @@
  					<!-- <p><a href="#" class="btn btn-primary" role="button">I own these shoes</a> -->
  				</div>
 			</div>
-		</div>
    </div>
 </div>
 <%end%>
