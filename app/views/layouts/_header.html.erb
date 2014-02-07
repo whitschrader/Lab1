@@ -1,4 +1,3 @@
-
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class= "container">
     <div class="navbar-header">
@@ -9,26 +8,36 @@
         <span class="icon-bar"></span>
       </button>
 
-      <a class="navbar-brand" href=<%new_session_path %>>Cinderella</a>
+      <a class="navbar-brand" href=<%new_session_path %>>Cinderella's Closet</a>
     </div>
-    <div class="form-group">
-        <ul class="nav navbar-nav navbar-right">
-          <% if signed_in? %>
-            <li><%= link_to "Add to closet", search_path %></li>
-            <li><%= link_to "Matching Shoes", match_path %></li>
-            <li><%= link_to "My closet", current_user %></li>
-            <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
-          <% else %>
-           <div class="form-group">
-            <%= form_for(:session, url: sessions_path) do |f| %>
-              <%= f.text_field :email,:placeholder => "email"%> 
-              <%= f.password_field :password, :placeholder => "password" %>
-            <%= f.submit "Sign in", class: "btn btn-small btn-success" %>
-          </div>
-          </ul>
+    <div class="row">
+      <div class="form-group">
+          <ul class="nav navbar-nav navbar-right">
+            <% if signed_in? %>
+              <li><%= link_to "Match to Others", match_path %></li>
+              <li><%= link_to "My Closet", current_user %></li>
+              <li><%= link_to "sign out", signout_path, method: "delete" %></li>
+            </ul>
+            <% else %>
+            <div class="form-inline">
+             <div class="form-group">
+              <%= form_for(:session, url: sessions_path) do |f| %>
+              </div>
+                <div class="form-group">
+                <%= f.text_field :email, :class => "form-control", :placeholder => "email"%>
+                  </div>
+                <div class="form-group"> 
+                <%= f.password_field :password, :class => "form-control", :placeholder => "password" %>
+                  </div>
+              <%= f.submit "Sign in", :class => "btn btn-small btn-success" %>
+            </div>
+        
+        </div>
+          
+            <% end %>
           <% end %>
-        <% end %>
-        </ul>
+        
       </div>
     </div>
+  </div>
 </div>

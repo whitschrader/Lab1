@@ -68,7 +68,8 @@ class UsersController < ApplicationController
     @user = User.new(new_user)
     if @user.save
         sign_in(@user)
-        redirect_to(@user) #going to the routes, finding prefix 'user'
+        #redirect_to(@user) #going to the routes, finding prefix 'user'
+        redirect_to search_path
     else
         render :new
     end
