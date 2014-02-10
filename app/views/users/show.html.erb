@@ -1,17 +1,19 @@
-<div class="search">
-	<%= render 'layouts/search' %>
+<div class="container-fluid">
+	<div class="row">
+		<%= render 'layouts/search' %>
+	</div>
 </div>
 
 <div class="list-header">
-<h1>My Closet</h1>
-<h4>psst... the more you add the more you'll discover!<h4>
+	<h1>My Closet</h1>
+
 </div>
 
 <div class="row">
 
 <% @my_closet.each do |p|%> 
 	<div class="col-shoe col-sm-6 col-md-4">
-			<div>
+			<div class="product-image">
 				<a href = "<%= p["product_url"] %>"> <img src = "<%= p["img_url"]%>"> </a> <br>
 				<div class="inline">
 					<div>

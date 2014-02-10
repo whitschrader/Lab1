@@ -10,3 +10,6 @@
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
 Shoeapp::Application.config.secret_key_base = 'cf07fdd81c0a1514a8537873033af070fbbdae46f44c3fd6ee7b7a29732a41df38b225aa02ed7874d8f91ab5cba7025fdec7854a7ff115524448285bbac77cca'
+
+#uncomment this for production??
+#Shoeapp::Application.config.secret_key_base = ENV['cf07fdd81c0a1514a8537873033af070fbbdae46f44c3fd6ee7b7a29732a41df38b225aa02ed7874d8f91ab5cba7025fdec7854a7ff115524448285bbac77cca']

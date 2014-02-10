@@ -65,6 +65,8 @@ gem 'dotenv-rails', group: :development
 
 gem 'rails_12factor', group: :production
 
+ruby "2.1.0"
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
