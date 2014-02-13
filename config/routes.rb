@@ -9,8 +9,6 @@ Shoeapp::Application.routes.draw do
 
   get '/match' => 'users#match'
 
-
-
   get '/signup' => 'users#new' 
 
   root to: 'sessions#new'
@@ -19,7 +17,7 @@ Shoeapp::Application.routes.draw do
   get '/signup' => 'users#new'
   delete '/signout', to: 'sessions#destroy'
   get'/signin' => 'sessions#new'
-  resources :sessions, :users, :shoes
+  resources :sessions, :shoes, :users
   
 
 

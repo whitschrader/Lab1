@@ -53,7 +53,7 @@ class ShoesController < ApplicationController
 	def get_results
 		#search_str = params[:shoes][:brand_name]
 		#http://api.zappos.com/Product/7564933?key=
-
+		
 		terms_for_typhoeus = {:term => 'adidas', :key => '27b076f861701c2532e22f21b7b455c545afde4c'}
 														 #27b076f861701c2532e22f21b7b455c545afde4c
 	 	terms_for_typhoeus[:term] =  "#{params[:shoes][:brand_name]} #{params[:shoes][:product_name]}"

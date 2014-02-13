@@ -64,6 +64,7 @@ class UsersController < ApplicationController
   end
 
   def create #sign up action
+    
     new_user = params.require(:user).permit(:name, :email, :password, :password_confirmation)
     @user = User.new(new_user)
     if @user.save
@@ -72,6 +73,7 @@ class UsersController < ApplicationController
         redirect_to search_path
     else
         render :new
+        #root_path
     end
   end
 
