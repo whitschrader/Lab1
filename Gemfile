@@ -45,15 +45,6 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0.beta'
-  gem 'guard-rspec'
-  gem 'guard-livereload'
-
-  gem 'database_cleaner'
-  gem 'launchy'
-
-  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
-
   gem 'dotenv-rails'
   
   gem 'pry'
@@ -61,6 +52,22 @@ group :development, :test do
   gem 'pry-byebug'
 
   gem 'awesome_print' 
+end
+
+group :test do
+  gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+
+  gem 'database_cleaner'
+  gem 'launchy'
+end
+
+# on non-mac systems, run `bundle install --without darwin`
+# to not add rb-fsevent to the bundle for those systems
+# see: http://www.johnplummer.com/rails/heroku-error-conditional-rbfsevent-gem.html
+group :test, :darwin do
+  gem 'rb-fsevent'
 end
 
 group :doc do
